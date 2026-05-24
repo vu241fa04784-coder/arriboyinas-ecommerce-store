@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - Arriboyina's</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial,sans-serif;
+        }
+
+        body{
+
+            min-height:100vh;
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            background:
+            linear-gradient(
+            rgba(15,23,42,0.75),
+            rgba(15,23,42,0.85)),
+
+            url('https://i.pinimg.com/736x/75/f6/4d/75f64d4a726393e84bb0873b6ef02d9e.jpg');
+
+            background-size:cover;
+            background-position:center;
+        }
+
+        .box{
+
+            width:400px;
+            padding:45px;
+
+            border-radius:30px;
+
+            background:
+            rgba(255,255,255,0.08);
+
+            backdrop-filter:blur(15px);
+
+            box-shadow:
+            0 10px 35px rgba(0,0,0,0.4);
+
+            text-align:center;
+        }
+
+        h1{
+            color:#facc15;
+            font-size:45px;
+            margin-bottom:25px;
+        }
+
+        p{
+            color:#e2e8f0;
+            margin-bottom:25px;
+            font-size:16px;
+        }
+
+        input{
+
+            width:100%;
+            padding:15px;
+
+            margin:12px 0;
+
+            border:none;
+            outline:none;
+
+            border-radius:15px;
+
+            font-size:18px;
+        }
+
+        button{
+
+            width:100%;
+
+            background:
+            linear-gradient(
+            to right,
+            #06b6d4,
+            #3b82f6);
+
+            border:none;
+
+            padding:15px;
+
+            border-radius:15px;
+
+            color:white;
+            font-size:20px;
+
+            cursor:pointer;
+
+            transition:0.3s;
+        }
+
+        button:hover{
+            transform:scale(1.04);
+        }
+
+        .register{
+            margin-top:20px;
+            color:white;
+        }
+
+        .register a{
+            color:#38bdf8;
+            text-decoration:none;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>
+🙏 Login
+</h1>
+
+<p>
+Welcome back to Arriboyina's
+</p>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<input
+type="text"
+name="username"
+placeholder="Enter Username">
+
+<input
+type="password"
+name="password"
+placeholder="Enter Password">
+
+<button type="submit">
+Login
+</button>
+
+</form>
+
+<div class="register">
+
+Don't have an account?
+
+<a href="/register/">
+Register
+</a>
+
+</div>
+
+</div>
+
+</body>
+</html>

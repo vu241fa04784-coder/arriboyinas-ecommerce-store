@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial,sans-serif;
+        }
+
+        body{
+
+            min-height:100vh;
+
+            background:
+            linear-gradient(
+            rgba(15,23,42,0.85),
+            rgba(15,23,42,0.92)),
+            url('https://i.pinimg.com/736x/75/f6/4d/75f64d4a726393e84bb0873b6ef02d9e.jpg');
+
+            background-size:cover;
+            background-position:center;
+
+            color:white;
+        }
+
+        .navbar{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+
+            padding:20px 60px;
+
+            background:
+            rgba(255,255,255,0.08);
+
+            backdrop-filter:blur(12px);
+        }
+
+        .logo{
+            font-size:40px;
+            color:#facc15;
+            font-weight:bold;
+        }
+
+        h1{
+            text-align:center;
+            margin-top:50px;
+            color:#facc15;
+            font-size:55px;
+        }
+
+        .dashboard{
+            width:85%;
+            margin:60px auto;
+
+            display:grid;
+            grid-template-columns:
+            repeat(2,1fr);
+
+            gap:35px;
+        }
+
+        .card{
+
+            padding:50px;
+
+            border-radius:30px;
+
+            background:
+            rgba(255,255,255,0.08);
+
+            backdrop-filter:blur(15px);
+
+            text-align:center;
+        }
+
+        .title{
+            font-size:30px;
+            color:#cbd5e1;
+        }
+
+        .number{
+            margin-top:20px;
+            font-size:60px;
+            font-weight:bold;
+            color:#22c55e;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">
+
+    <div class="logo">
+        📊 Arriboyina's Dashboard
+    </div>
+
+</div>
+
+<h1>
+📈 Admin Analytics
+</h1>
+
+<div class="dashboard">
+
+    <div class="card">
+        <div class="title">
+            🛍️ Total Products
+        </div>
+
+        <div class="number">
+            {{ total_products }}
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="title">
+            👤 Total Users
+        </div>
+
+        <div class="number">
+            {{ total_users }}
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="title">
+            📦 Total Orders
+        </div>
+
+        <div class="number">
+            {{ total_orders }}
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="title">
+            💰 Total Revenue
+        </div>
+
+        <div class="number">
+            ₹{{ total_revenue }}
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

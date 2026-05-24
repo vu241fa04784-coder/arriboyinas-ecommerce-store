@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart - Arriboyina's</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial,sans-serif;
+        }
+
+        body{
+            min-height:100vh;
+
+            background:
+            linear-gradient(
+            rgba(15,23,42,0.75),
+            rgba(15,23,42,0.85)),
+            url('https://i.pinimg.com/736x/75/f6/4d/75f64d4a726393e84bb0873b6ef02d9e.jpg');
+
+            background-size:cover;
+            background-position:center;
+
+            color:white;
+        }
+
+        /* NAVBAR */
+
+        .navbar{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+
+            padding:20px 70px;
+
+            background:
+            rgba(255,255,255,0.08);
+
+            backdrop-filter:blur(12px);
+        }
+
+        .logo{
+            font-size:38px;
+            font-weight:bold;
+            color:#facc15;
+        }
+
+        .nav-links a{
+            text-decoration:none;
+            color:white;
+            margin-left:30px;
+            font-size:20px;
+            transition:0.3s;
+        }
+
+        .nav-links a:hover{
+            color:#38bdf8;
+        }
+
+        /* TITLE */
+
+        h1{
+            text-align:center;
+            font-size:60px;
+            color:#facc15;
+            margin-top:50px;
+        }
+
+        /* CART BOX */
+
+        .cart-box{
+
+            width:80%;
+            margin:50px auto;
+            padding:40px;
+
+            border-radius:30px;
+
+            background:
+            rgba(255,255,255,0.08);
+
+            backdrop-filter:blur(15px);
+
+            box-shadow:
+            0 10px 35px rgba(0,0,0,0.4);
+        }
+
+        /* ITEM */
+
+        .item{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+
+            padding:25px 0;
+
+            border-bottom:
+            1px solid rgba(255,255,255,0.2);
+
+            font-size:24px;
+        }
+
+        .product-info{
+            width:250px;
+        }
+
+        .price{
+            color:#22c55e;
+            font-size:28px;
+            font-weight:bold;
+        }
+
+        /* QUANTITY */
+
+        .quantity-box{
+            display:flex;
+            align-items:center;
+            gap:12px;
+        }
+
+        .btn{
+            border:none;
+            cursor:pointer;
+
+            padding:10px 18px;
+
+            border-radius:12px;
+
+            color:white;
+            font-size:18px;
+        }
+
+        .plus{
+            background:#22c55e;
+        }
+
+        .minus{
+            background:#f59e0b;
+        }
+
+        .remove{
+            background:#ef4444;
+        }
+
+        /* TOTAL */
+
+        .total{
+            text-align:right;
+            font-size:35px;
+            color:#22c55e;
+            margin-top:35px;
+            font-weight:bold;
+        }
+
+        /* PAYMENT BUTTON */
+
+        .checkout-btn{
+
+            background:
+            linear-gradient(
+            to right,
+            #06b6d4,
+            #3b82f6);
+
+            border:none;
+
+            color:white;
+
+            padding:16px 30px;
+
+            border-radius:18px;
+
+            font-size:22px;
+
+            cursor:pointer;
+
+            margin-top:30px;
+
+            transition:0.3s;
+        }
+
+        .checkout-btn:hover{
+            transform:scale(1.05);
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">
+
+    <div class="logo">
+        🛒 Arriboyina's
+    </div>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/cart/">Cart</a>
+        <a href="/logout/">Logout</a>
+    </div>
+
+</div>
+
+<h1>
+🛒 Your Cart
+</h1>
+
+<div class="cart-box">
+
+{% for item in cart_items %}
+
+<div class="item">
+
+<div class="product-info">
+
+<b>
+{{ item.name }}
+</b>
+
+<br><br>
+
+<span class="price">
+₹{{ item.price }}
+</span>
+
+</div>
+
+<div class="quantity-box">
+
+<a href="/decrease/{{ forloop.counter0 }}/">
+<button class="btn minus">
+-
+</button>
+</a>
+
+<span>
+{{ item.quantity }}
+</span>
+
+<a href="/increase/{{ forloop.counter0 }}/">
+<button class="btn plus">
++
+</button>
+</a>
+
+</div>
+
+<a href="/remove-from-cart/{{ forloop.counter0 }}/">
+<button class="btn remove">
+Remove
+</button>
+</a>
+
+</div>
+
+{% endfor %}
+
+<h2 class="total">
+Total: ₹{{ total }}
+</h2>
+
+<center>
+
+<a href="/">
+
+<button class="checkout-btn">
+ 🏠 Go To Home Page
+</button>
+
+</a>
+
+</center>
+
+</div>
+
+</body>
+</html>

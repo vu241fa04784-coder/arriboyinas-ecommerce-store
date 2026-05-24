@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Orders - Arriboyina's</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial,sans-serif;
+        }
+
+        body{
+            min-height:100vh;
+
+            background:
+            linear-gradient(
+            rgba(15,23,42,0.75),
+            rgba(15,23,42,0.85)),
+            url('https://i.pinimg.com/736x/75/f6/4d/75f64d4a726393e84bb0873b6ef02d9e.jpg');
+
+            background-size:cover;
+            background-position:center;
+
+            color:white;
+        }
+
+        .navbar{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+
+            padding:20px 70px;
+
+            background:
+            rgba(255,255,255,0.08);
+
+            backdrop-filter:blur(12px);
+        }
+
+        .logo{
+            font-size:38px;
+            font-weight:bold;
+            color:#facc15;
+        }
+
+        .nav-links a{
+            text-decoration:none;
+            color:white;
+            margin-left:30px;
+            font-size:20px;
+        }
+
+        h1{
+            text-align:center;
+            color:#facc15;
+            font-size:55px;
+            margin-top:40px;
+        }
+
+        .orders-box{
+            width:80%;
+            margin:40px auto;
+
+            padding:40px;
+
+            border-radius:30px;
+
+            background:
+            rgba(255,255,255,0.08);
+
+            backdrop-filter:blur(15px);
+        }
+
+        .order{
+
+            background:
+            rgba(255,255,255,0.08);
+
+            padding:25px;
+            border-radius:20px;
+
+            margin-bottom:20px;
+
+            font-size:22px;
+        }
+
+        .price{
+            color:#22c55e;
+            font-size:28px;
+            font-weight:bold;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">
+
+<div class="logo">
+🛒 Arriboyina's
+</div>
+
+<div class="nav-links">
+<a href="/">Home</a>
+<a href="/cart/">Cart</a>
+<a href="/logout/">Logout</a>
+</div>
+
+</div>
+
+<h1>
+📦 My Orders
+</h1>
+
+<div class="orders-box">
+
+{% for order in orders %}
+
+<div class="order">
+
+<b>{{ order.product_name }}</b>
+
+<br><br>
+
+<span class="price">
+₹{{ order.price }}
+</span>
+
+<br><br>
+
+Quantity:
+{{ order.quantity }}
+
+<br><br>
+
+Date:
+{{ order.created_at }}
+
+</div>
+
+{% empty %}
+
+<h2>
+No Orders Yet
+</h2>
+
+{% endfor %}
+
+</div>
+
+</body>
+</html>

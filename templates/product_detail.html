@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ product.name }}</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial,sans-serif;
+        }
+
+        body{
+            min-height:100vh;
+
+            background:
+            linear-gradient(
+            rgba(15,23,42,0.82),
+            rgba(15,23,42,0.90)),
+            url('https://i.pinimg.com/736x/75/f6/4d/75f64d4a726393e84bb0873b6ef02d9e.jpg');
+
+            background-size:cover;
+            background-position:center;
+            background-attachment:fixed;
+
+            color:white;
+        }
+
+        /* POPUP */
+
+        .popup{
+
+            position:fixed;
+
+            top:25px;
+            right:25px;
+
+            background:#22c55e;
+
+            color:white;
+
+            padding:18px 30px;
+
+            border-radius:18px;
+
+            font-size:20px;
+
+            z-index:9999;
+
+            animation:fadeout 3s forwards;
+        }
+
+        @keyframes fadeout{
+
+            0%{
+                opacity:1;
+            }
+
+            80%{
+                opacity:1;
+            }
+
+            100%{
+                opacity:0;
+            }
+        }
+
+        /* NAVBAR */
+
+        .navbar{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+
+            padding:20px 60px;
+
+            background:
+            rgba(255,255,255,0.08);
+
+            backdrop-filter:blur(12px);
+        }
+
+        .logo{
+            font-size:38px;
+            font-weight:bold;
+            color:#facc15;
+        }
+
+        .nav-links{
+            display:flex;
+            align-items:center;
+            gap:28px;
+        }
+
+        .nav-links a{
+            text-decoration:none;
+            color:white;
+            font-size:22px;
+            transition:0.3s;
+        }
+
+        .nav-links a:hover{
+            color:#38bdf8;
+        }
+
+        /* PRODUCT SECTION */
+
+        .container{
+
+            width:85%;
+            margin:70px auto;
+
+            display:flex;
+            gap:50px;
+
+            background:
+            rgba(255,255,255,0.08);
+
+            backdrop-filter:blur(15px);
+
+            padding:50px;
+
+            border-radius:35px;
+
+            box-shadow:
+            0 10px 30px rgba(0,0,0,0.35);
+        }
+
+        .product-image{
+            width:500px;
+            height:500px;
+            object-fit:cover;
+            border-radius:30px;
+        }
+
+        .details{
+            flex:1;
+        }
+
+        .title{
+            font-size:58px;
+            color:#facc15;
+        }
+
+        .price{
+            font-size:52px;
+            color:#22c55e;
+            margin-top:20px;
+            font-weight:bold;
+        }
+
+        .desc{
+            margin-top:25px;
+            font-size:24px;
+            color:#d1d5db;
+            line-height:1.8;
+        }
+
+        .tag{
+            margin-top:30px;
+            font-size:22px;
+            color:#38bdf8;
+        }
+
+        .buttons{
+            margin-top:45px;
+            display:flex;
+            gap:20px;
+            flex-wrap:wrap;
+        }
+
+        .btn{
+            text-decoration:none;
+
+            background:
+            linear-gradient(
+            to right,
+            #06b6d4,
+            #3b82f6);
+
+            color:white;
+
+            padding:18px 35px;
+
+            border-radius:18px;
+
+            font-size:22px;
+
+            transition:0.3s;
+        }
+
+        .btn:hover{
+            transform:scale(1.05);
+        }
+
+    </style>
+</head>
+
+<body>
+
+{% if cart_message %}
+<div class="popup">
+    {{ cart_message }}
+</div>
+{% endif %}
+
+<div class="navbar">
+
+    <div class="logo">
+        🛒 Arriboyina's
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/">Home</a>
+
+        <a href="/cart/">
+            🛒 Cart ({{ cart_count }})
+        </a>
+
+        <a href="/my-orders/">
+            My Orders
+        </a>
+
+    </div>
+
+</div>
+
+<div class="container">
+
+    <img
+    src="{{ product.image }}"
+    class="product-image">
+
+    <div class="details">
+
+        <h1 class="title">
+            {{ product.name }}
+        </h1>
+
+        <div class="price">
+            ₹{{ product.price }}
+        </div>
+
+        <p class="desc">
+            {{ product.description }}
+        </p>
+
+        <div class="tag">
+            ⭐ Premium Quality Product | Fast Delivery | Best Price Guaranteed
+        </div>
+
+        <div class="buttons">
+
+            <a
+            href="/add-to-cart/{{ product.id }}/"
+            class="btn">
+
+            🛒 Add To Cart
+
+            </a>
+
+            <a
+            href="/buy-now/{{ product.id }}/"
+            class="btn">
+
+            ⚡ Buy Product
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
